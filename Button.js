@@ -29,6 +29,7 @@ export default class Button extends Component {
     styleDisabled: TextPropTypes.style,
     childGroupStyle: ViewPropTypes.style,
     androidBackground: PropTypes.object,
+    useAndroidType: PropTypes.bool,
   };
 
   render() {
@@ -50,7 +51,7 @@ export default class Button extends Component {
       touchableProps.delayLongPress = this.props.delayLongPress;
     }
 
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === 'ios'||!this.props.useAndroidType) {
       return (
         <TouchableOpacity
           {...touchableProps}
